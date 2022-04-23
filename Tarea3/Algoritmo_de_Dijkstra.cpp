@@ -27,29 +27,37 @@ int main(){
 	priority_queue <state, vector<state>, greater<state>> pq;
 	// vector de distancias, inicializamos en INF
 	vector <ll> dist(n, INF);
-
+	vector <int> parents(n,-1);
 	pq.push({0,0});
 	dist[0] = 0;
 
 	while(!pq.empty()){
-		auto [peso_camino, u] = pq.top(); // C++17 (structured binding)
+		state item = pq.top();
+		ll peso_camino = item.first;
+		int u = item.second;
 		pq.pop();
 
 		if(peso_camino != dist[u]) continue; // ya revisamos un camino mejor hacia u, ignoramos este
 
-		for(auto [v, w] : adj[u]){ // [v,w] de C++17
+		for (int i = 0; i < adj[u].size(); i ++){
 			// para cada vecino v de u con peso w
+			ll v = adj[u][i].first;
+			int w = adj[u][i].second;			
 			if(peso_camino + w < dist[v]){
 				// encontramos un mejor camino hacia v! actualizamos
 				// su distancia y lo agregamos a la cola
 				dist[v] = peso_camino+w;
 				pq.push({dist[v], v});
+				parents[v] = u;
 			}
 		}
 	}
-
 	// las distancias finales están en "dist"
-
+	int k = n-1;
+	while (parents[k] != -1){
+		
+	}
+	
 	return 0;
 }
 
