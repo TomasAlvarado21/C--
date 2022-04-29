@@ -33,29 +33,31 @@ int main(){
 
 	while(!pq.empty()){
 		state item = pq.top();
-		ll peso_camino = item.first;
-		int u = item.second;
+		int u = item.first;
+		ll peso_camino = item.second;
 		pq.pop();
 
 		if(peso_camino != dist[u]) continue; // ya revisamos un camino mejor hacia u, ignoramos este
 
 		for (int i = 0; i < adj[u].size(); i ++){
 			// para cada vecino v de u con peso w
-			ll v = adj[u][i].first;
-			int w = adj[u][i].second;			
+			int v = adj[u][i].first;
+			ll w = adj[u][i].second;			
 			if(peso_camino + w < dist[v]){
 				// encontramos un mejor camino hacia v! actualizamos
 				// su distancia y lo agregamos a la cola
 				dist[v] = peso_camino+w;
-				pq.push({dist[v], v});
+				pq.push({v,dist[v]});
 				parents[v] = u;
 			}
 		}
 	}
 	// las distancias finales están en "dist"
+
 	int k = n-1;
 	while (parents[k] != -1){
-		
+		cout << parents[k-1] << endl;
+		k--;
 	}
 	
 	return 0;
