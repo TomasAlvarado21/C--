@@ -3,12 +3,32 @@
 #include <string>
 using namespace std;
 
+
+// Function to divide an array between evens and odds
+void evenOdd(int arr[], int n)
+{
+    int i, j, k;
+    for (i = 0, j = 0, k = n - 1; i < k;)
+    {
+        if (arr[i] % 2 == 0)
+        {
+            swap(arr[i], arr[j]);
+            i++;
+            j++;
+        }
+        else
+        {
+            swap(arr[i], arr[k]);
+            k--;
+        }
+    }
+}
+
 // Function to find the all the pairs of numbers in an array that
 // the maximum common divisor of the two numbers > 1
 void findMaxPair(int arr[], int n){
     // Sort the array
-    sort(arr, arr+n);
-    reverse(arr, arr+n);
+    evenOdd(arr, n);
     // Initialize the result
     int result = 0;
     // Initialize the two pointers
