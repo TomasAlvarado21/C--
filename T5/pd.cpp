@@ -12,28 +12,44 @@ using namespace std;
 
 void max_power(vector<vector<int>> arr){
     int n = arr.size();
-    int k = arr[n].back();
     arr[n].pop_back();
+    int k = 1;
     int result = 0;
+    vector<vector<int>> arr2(n);
+    // sort vector arr
     for (int i = 0; i < n; i++){
-        sort(arr[i].begin(), arr[i].end());
-        while (arr[i].size() % k != 0){
-            arr[i].pop_back();
+        copy(arr[i].begin(), arr[i].end(), arr2[i].begin());
+        sort(arr2[i].begin(), arr2[i].end());
+        while (arr2[i].size() % k != 0){
+            arr2[i].pop_back();
         }
         for (int j = 0; j < k; j++){
-            result += arr[i][j];
+            result += arr2[i][j];
         }
     }
-    cout << result << endl;
+    //copy arr in arr2
+    for (int i = 0; i < n; i++){
+        copy(arr[i].begin(), arr[i].end(), arr2[i].begin());
+    }
+    for (int i = 0; i < n; i++){
+        while (arr2[i].size() % k != 0){
+            arr2[i].pop_back();
+        }
+        for (int j = 0; j < arr2[i].size(); j++){
+            result += arr2[i][j];
+        }
+        k++;
+        cout << result << endl;
+    }
 }
 
 int main(){
     int n;
     cin >> n;
+    int d;
+    cin >> d;
+    vector<vector<int>> arr(n);
     for (int i = 0; i < n; i++){
-        int n;
-        cin >> n;
-        vector<vector<int>> arr(n);
         for (int j = 0; j < n; j++){
             int a;
             cin >> a;
@@ -42,6 +58,6 @@ int main(){
         int k;
         cin >> k;
         arr[n].push_back(k);
-        max_power(arr);
     }
+    max_power(arr);
 }
