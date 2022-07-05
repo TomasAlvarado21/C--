@@ -4,6 +4,10 @@
 using namespace std;
 #include <algorithm>
 
+// function to remove first element from an array, n is the size of the array
+void removee(int arr[], n){
+}
+
 // we need a function that firts recives the number of cases, then the next input n the number of univeristies and students
 // the next n inputs are the university of the i-th student
 // the next n inputs are the hability of the i-th student
