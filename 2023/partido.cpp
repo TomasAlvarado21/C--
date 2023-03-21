@@ -3,5 +3,12 @@
 using namespace std;
 
 int main(){
-    // aca solo basta con tener que revisar el penultimo elemento de las lista para ver quien es el que ganó
+
+    string s;
+    cin >> s;
+    if(s[s.size()-2] == 'A'){
+        cout << "A" << endl;
+    }else{
+        cout << "B" << endl;
+    }
 } 

@@ -9,10 +9,11 @@ bool solve(){
     string s, t;
 
     cin >> n >> m >> s >> t;
-    reverse(t.begin(), t.end())
+    reverse(t.begin(), t.end());
     string st = s + t;
     
-    last = st[0]
+    int last = st[0];
+    int errores = 0;
     for(int i = 1; i < st.size(); i++){
         if(st[i] == last) errores++;
 
@@ -29,7 +30,11 @@ int main(){
     cin >> t;
 
     while(t--){
-
+        if(solve()){
+            cout << "YES" << endl;
+        }else{
+            cout << "NO" << endl;
+        }
     }
 
 }
