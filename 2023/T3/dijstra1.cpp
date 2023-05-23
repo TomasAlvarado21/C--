@@ -64,10 +64,10 @@ int main(){
 				}
 			}
 		}
-		camino.push_back(0);
-		reverse(camino.begin(), camino.end());
-		for(auto u : camino) cout << u+1 << " ";
-		cout << endl;
+		// camino.push_back(0);
+		// reverse(camino.begin(), camino.end());
+		// for(auto u : camino) cout << u+1 << " ";
+		// cout << endl;
 	}
 	
 	return 0;
