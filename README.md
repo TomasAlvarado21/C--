@@ -1,2 +1,2 @@
-# C--
+# Programación competitiva
  C++ 
